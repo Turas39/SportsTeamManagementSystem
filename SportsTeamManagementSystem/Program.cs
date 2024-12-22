@@ -30,6 +30,45 @@ public class Player : IPlayer
     }
 }
 
+public class Team
+{
+    private List<IPlayer> players;
+
+    public Team()
+    {
+        players = new List<IPlayer>();
+    }
+    
+    public void AddPlayer(IPlayer player)
+    {
+        players.Add(player);
+        Console.WriteLine($"Zawodnik {player.Name} został dodany do drużyny.");
+    }
+    
+    public void RemovePlayer(string name)
+    {
+        var playerToRemove = players.FirstOrDefault(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+        if (playerToRemove != null)
+        {
+            players.Remove(playerToRemove);
+            Console.WriteLine($"Zawodnik {name} został usunięty z drużyny.");
+        }
+        else
+        {
+            Console.WriteLine($"Zawodnika o imieniu {name} nie ma w drużynie.");
+        }
+    }
+    
+    public void DisplayTeamStats()
+    {
+        Console.WriteLine("Statystyki drużyny:");
+        foreach (var player in players)
+        {
+            Console.WriteLine($"Imię: {player.Name}, Pozycja: {player.Position}, Wynik: {player.Score}");
+        }
+    }
+}
+
 internal class Program
 {
     public static void Main(string[] args)
