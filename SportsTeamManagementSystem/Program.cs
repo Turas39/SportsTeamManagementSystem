@@ -102,6 +102,20 @@ internal class Program
 {
     public static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        Team team = new Team();
+        
+        team.AddPlayer(new Player("Michał Pazdan", "Defender", 7));
+        team.AddPlayer(new Player("Zbigniew Boniek", "Midfielder", 8));
+        team.AddPlayer(new Player("Robert Lewandowski", "Striker", 10));
+        
+        team.DisplayTeamStats();
+        
+        team.DisplayAverageScore();
+        
+        team.FindPlayersByPosition("Midfielder");
+        
+        team.RemovePlayer("Zbigniew Boniek");
+        
+        team.DisplayTeamStats();
     }
 }
