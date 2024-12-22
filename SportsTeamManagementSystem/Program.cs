@@ -78,6 +78,24 @@ public class Team
         double averageScore = CalculateAverageScore(players);
         Console.WriteLine($"Średnia punktów drużyny: {averageScore:F2}");
     }
+    
+    public void FindPlayersByPosition(string position)
+    {
+        var filteredPlayers = players.Where(p => p.Position.Equals(position, StringComparison.OrdinalIgnoreCase)).ToList();
+
+        if (filteredPlayers.Any())
+        {
+            Console.WriteLine($"Zawodnicy grający na pozycji {position}:");
+            foreach (var player in filteredPlayers)
+            {
+                Console.WriteLine($"Imię: {player.Name}, Wynik: {player.Score}");
+            }
+        }
+        else
+        {
+            Console.WriteLine($"Brak zawodników na pozycji {position}.");
+        }
+    }
 }
 
 internal class Program
