@@ -67,6 +67,17 @@ public class Team
             Console.WriteLine($"Imię: {player.Name}, Pozycja: {player.Position}, Wynik: {player.Score}");
         }
     }
+    
+    public static double CalculateAverageScore(List<IPlayer> players)
+    {
+        return players.Any() ? players.Average(p => p.Score) : 0;
+    }
+
+    public void DisplayAverageScore()
+    {
+        double averageScore = CalculateAverageScore(players);
+        Console.WriteLine($"Średnia punktów drużyny: {averageScore:F2}");
+    }
 }
 
 internal class Program
